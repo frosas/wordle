@@ -1,0 +1,30 @@
+
+> wordle-paraules@ start /workspaces/wordle-paraules
+> ts-node .
+
+{
+  A: 192,
+  E: 148,
+  R: 140,
+  S: 122,
+  T: 109,
+  O: 105,
+  I: 98,
+  N: 77,
+  L: 71,
+  C: 67,
+  U: 64,
+  P: 55,
+  M: 50,
+  D: 34,
+  G: 32,
+  B: 29,
+  V: 29,
+  F: 23,
+  J: 14,
+  H: 8,
+  X: 7,
+  Q: 6,
+  Y: 3,
+  Z: 2
+}
