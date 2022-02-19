@@ -1,0 +1,7 @@
+{
+  "name": "wordle-paraules",
+  "private": true,
+  "scripts": {
+    "start": "npx ts-node index.ts"
+  }
+}
