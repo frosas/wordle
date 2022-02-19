@@ -2,13 +2,11 @@ import { words } from "./words";
 
 const letterFrequencies = words.reduce<Record<string, number>>(
   (frequencies, word) => {
+    const letters = normalizeWord(word).split("");
     // TODO Use only 5-letter words
-    // TODO Remove duplicate letters
-    normalizeWord(word)
-      .split("")
-      .forEach((letter) => {
-        frequencies[letter] = (frequencies[letter] ?? 0) + 1;
-      });
+    deduplicate(letters).forEach((letter) => {
+      frequencies[letter] = (frequencies[letter] ?? 0) + 1;
+    });
     return frequencies;
   },
   {}
@@ -27,4 +25,8 @@ function normalizeWord(word: string) {
     .toLowerCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
+}
+
+function deduplicate<T>(array: T[]) {
+  return array.filter((value, index) => array.indexOf(value) === index);
 }
