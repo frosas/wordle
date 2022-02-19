@@ -14,10 +14,9 @@ const letterFrequencies = words
     {}
   );
 
-const sortedLetterFrequencies = Object.fromEntries(
-  Object.entries(letterFrequencies).sort(
-    ([, aFrequency], [, bFrequency]) => bFrequency - aFrequency
-  )
+const sortedLetterFrequencies = sortObject(
+  letterFrequencies,
+  ([, aFrequency], [, bFrequency]) => bFrequency - aFrequency
 );
 
 console.log(sortedLetterFrequencies);
@@ -31,4 +30,11 @@ function normalizeWord(word: string) {
 
 function deduplicate<T>(array: T[]) {
   return array.filter((value, index) => array.indexOf(value) === index);
+}
+
+function sortObject<T>(
+  object: { [k: string]: T },
+  compare: (a: [string, T], b: [string, T]) => number
+) {
+  return Object.fromEntries(Object.entries(object).sort(compare));
 }
