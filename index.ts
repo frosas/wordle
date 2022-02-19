@@ -2,13 +2,17 @@ import { words } from "./words";
 
 const letterFrequencies = words
   .filter((word) => word.length === 5)
-  .reduce<Record<string, number>>((frequencies, word) => {
-    const letters = normalizeWord(word).split("");
-    deduplicate(letters).forEach((letter) => {
-      frequencies[letter] = (frequencies[letter] ?? 0) + 1;
-    });
-    return frequencies;
-  }, {});
+  .map(normalizeWord)
+  .map((word) => word.split(""))
+  .map(deduplicate)
+  .flat()
+  .reduce<Record<string, number>>(
+    (frequencies, letter) => ({
+      ...frequencies,
+      [letter]: (frequencies[letter] ?? 0) + 1,
+    }),
+    {}
+  );
 
 const sortedLetterFrequencies = Object.fromEntries(
   Object.entries(letterFrequencies).sort(
@@ -16,7 +20,7 @@ const sortedLetterFrequencies = Object.fromEntries(
   )
 );
 
-console.log(`🍅`, sortedLetterFrequencies);
+console.log(sortedLetterFrequencies);
 
 function normalizeWord(word: string) {
   return word
