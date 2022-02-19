@@ -29,7 +29,7 @@ function normalizeWord(word: string) {
 }
 
 function deduplicate<T>(array: T[]) {
-  return array.filter((value, index) => array.indexOf(value) === index);
+  return Array.from(new Set(array));
 }
 
 function sortObject<T>(
