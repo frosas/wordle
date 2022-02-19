@@ -23,7 +23,7 @@ console.log(sortedLetterFrequencies);
 
 function normalizeWord(word: string) {
   return word
-    .toLowerCase()
+    .toUpperCase()
     .normalize("NFD")
     .replace(/[\u0300-\u036f]/g, "");
 }
