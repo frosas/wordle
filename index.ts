@@ -1,16 +1,14 @@
 import { words } from "./words";
 
-const letterFrequencies = words.reduce<Record<string, number>>(
-  (frequencies, word) => {
+const letterFrequencies = words
+  .filter((word) => word.length === 5)
+  .reduce<Record<string, number>>((frequencies, word) => {
     const letters = normalizeWord(word).split("");
-    // TODO Use only 5-letter words
     deduplicate(letters).forEach((letter) => {
       frequencies[letter] = (frequencies[letter] ?? 0) + 1;
     });
     return frequencies;
-  },
-  {}
-);
+  }, {});
 
 const sortedLetterFrequencies = Object.fromEntries(
   Object.entries(letterFrequencies).sort(
