@@ -2,6 +2,12 @@
   "name": "wordle-paraules",
   "private": true,
   "scripts": {
-    "start": "npx ts-node index.ts"
+    "start": "ts-node .",
+    "watch": "node-dev --respawn index.ts"
+  },
+  "devDependencies": {
+    "@tsconfig/node16-strictest": "^1.0.0",
+    "node-dev": "^7.1.0",
+    "ts-node": "^10.5.0"
   }
 }
