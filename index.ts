@@ -25,9 +25,7 @@ const sortedLetterFrequenciesWithRatio = Object.fromEntries(
     letter,
     {
       frequency,
-      frequencyRatio: `${((frequency / fiveLetterWords.length) * 100).toFixed(
-        0
-      )}%`,
+      frequencyRatio: toPercentage(frequency / fiveLetterWords.length),
     },
   ])
 );
@@ -50,4 +48,8 @@ function sortObject<T>(
   compare: (a: [string, T], b: [string, T]) => number
 ) {
   return Object.fromEntries(Object.entries(object).sort(compare));
+}
+
+function toPercentage(ratio: number) {
+  return `${(ratio * 100).toFixed(2)}%`;
 }
