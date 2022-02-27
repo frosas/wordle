@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "start": "ts-node .",
-    "watch": "node-dev --respawn index.ts"
+    "dev": "node-dev --respawn index.ts"
   },
   "devDependencies": {
     "@tsconfig/node16-strictest": "^1.0.0",
