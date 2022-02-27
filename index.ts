@@ -1,7 +1,8 @@
 import { words } from "./words";
 
-const letterFrequencies = words
-  .filter((word) => word.length === 5)
+const fiveLetterWords = words.filter((word) => word.length === 5);
+
+const letterFrequencies = fiveLetterWords
   .map(normalizeWord)
   .map((word) => word.split(""))
   .map(deduplicate)
@@ -19,7 +20,19 @@ const sortedLetterFrequencies = sortObject(
   ([, aFrequency], [, bFrequency]) => bFrequency - aFrequency
 );
 
-console.log(sortedLetterFrequencies);
+const sortedLetterFrequenciesWithRatio = Object.fromEntries(
+  Object.entries(sortedLetterFrequencies).map(([letter, frequency]) => [
+    letter,
+    {
+      frequency,
+      frequencyRatio: `${((frequency / fiveLetterWords.length) * 100).toFixed(
+        0
+      )}%`,
+    },
+  ])
+);
+
+console.log(sortedLetterFrequenciesWithRatio);
 
 function normalizeWord(word: string) {
   return word
